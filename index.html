@@ -20,7 +20,7 @@
         // Posted by bryc, modified by community. See post 'Timeline' for change history
         // Retrieved 2026-10-10, License - CC BY-SA 4.0
 
-        var seed = parseInt((date.getUTCDate().toString() + (date.getUTCMonth() + 1).toString() + (date.getUTCFullYear()).toString()));
+        var seed = parseInt((date.getUTCDate().toString() + (date.getUTCFullYear()).toString() + (date.getUTCMonth() + 1).toString()));
         const prng = splitmix32(seed)
 
 
@@ -28,7 +28,7 @@
         .then(response=>response.text())
         .then(raw => {
             raw = raw.split("\n");
-            let word_num = (prng() * 10000000000000000) % raw.length;
+            let word_num = Math.floor(prng() * raw.length);
             let word = raw[word_num];
             word_container.textContent = word;
 
